@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="PharmaLedger - Fighting counterfeit medicines in India through blockchain-powered verification">
+    <meta name="keywords" content="pharmaceutical, counterfeit, medicine, verification, healthcare, India">
+    <title>PharmaLedger | Fighting Counterfeit Medicines in India</title>
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="/images/favicon.png" alt="PharmaLedger Logo">
+                <!-- <span>PharmaLedger</span> -->
+            </div>
+
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#stakeholders" class="nav-link">Register</a>
+            </div>
+
+            <div class="nav-auth">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+                <a href="html/login.html" class="btn btn-outline" id="login-btn">Login</a>
+                <a href="#register" class="btn btn-primary" style="display: none;" id="register-btn">Register</a>
+                <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Fighting Counterfeit Medicines
+                        <br>in India
+                    </h1>
+                    <p class="hero-subtitle" >
+                        A centralized platform connecting manufacturers, pharmacies, and citizens
+                        to combat pharmaceutical counterfeiting through advanced verification technology, secure
+                        database.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10,000+</span>
+                            <span class="stat-label">batches verified</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">250+</span>
+                            <span class="stat-label">verified manufacturers</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#verify" class="btn btn-primary btn-large">
+                            <i class="fas fa-search-plus"></i>
+                            Verify Medicine
+                        </a>
+                        <a href="#how-it-works" class="btn btn-outline btn-large">
+                            <i class="fas fa-play"></i>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-graphic">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Verified</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-qrcode"></i>
+                            <span>QR Scan</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Authentic</span>
+                        </div>
+                        <div class="floating-card card-4">
+                            <i class="fas fa-search"></i>
+                            <span>Specific Search</span>
+                        </div>
+                        <div class="floating-card card-5">
+                            <i class="fas fa-lock"></i>
+                            <span>Secure</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="verification-section" id="verify">
+        <div class="container">
+            <div class="section-header">
+                <h2>Quick Medicine Verification</h2>
+                <p>Instantly check if your medicine is authentic</p>
+            </div>
+            <div class="verification-card">
+                <div class="verification-tabs">
+                    <button class="tab-btn active" data-tab="manual">
+                        <i class="fas fa-keyboard"></i>
+                        Manual Entry
+                    </button>
+                    <button class="tab-btn" data-tab="qr">
+                        <i class="fas fa-qrcode"></i>
+                        QR Scan
+                    </button>
+                </div>
+
+                <div class="tab-content active" id="manual-tab">
+                    <form class="verification-form" id="manual-verification">
+                        <div class="form-group">
+                            <label for="batch-number">Batch Number</label>
+                            <input type="text" id="batch-number" name="batch-number"
+                                placeholder="Enter batch number (e.g., DP001/2025)" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                            Verify Now
+                        </button>
+                    </form>
+                </div>
+
+                <div class="tab-content" id="qr-tab">
+                    <div class="qr-scanner">
+                        <div class="scanner-placeholder">
+                            <i class="fas fa-camera"></i>
+                            <p>Click to enable camera and scan QR code</p>
+                            <button class="btn btn-outline" id="start-scanner">
+                                <i class="fas fa-camera"></i>
+                                Start Scanner
+                            </button>
+                        </div>
+                        <video id="qr-video" style="display: none;"></video>
+                        <canvas id="qr-canvas" style="display: none;"></canvas>
+                    </div>
+                </div>
+
+                <div class="verification-result" id="verification-result" style="display: none;">
+                    <div class="result-content">
+                        <div class="result-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="result-text">
+                            <h4 id="result-status">Medicine Verified</h4>
+                            <p id="result-details">This medicine is authentic and safe to use.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>A simple 4-step process to ensure medicine authenticity</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-item" data-step="1">
+                    <div class="step-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Manufacturers Upload</h3>
+                        <p>Licensed manufacturers upload batch data to our secure database</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item" data-step="2">
+                    <div class="step-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>QR Generation</h3>
+                        <p>Unique QR codes are generated for each batch and product</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item" data-step="3">
+                    <div class="step-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Pharmacy Verification</h3>
+                        <p>Pharmacies verify batch authenticity before distribution</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item" data-step="4">
+                    <div class="step-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Consumer Safety</h3>
+                        <p>Citizens scan QR codes or enter batch numbers for verification</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Platform Features</h2>
+                <p>Comprehensive tools for all stakeholders in the pharmaceutical supply chain</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Real-time Verification</h3>
+                    <p>Instant authenticity checking with immediate results and detailed information.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3>QR Code Support</h3>
+                    <p>Advanced QR code scanning capabilities for mobile devices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Multi-stakeholder Platform</h3>
+                    <p>Connecting manufacturers, pharmacies, and consumers seamlessly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure Database</h3>
+                    <p>Encrypted, tamper-proof database with comprehensive audit trails.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Bulk Operations</h3>
+                    <p>Excel-based bulk verification for pharmacy efficiency and convenience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Optimized</h3>
+                    <p>Perfect mobile experience for field verification and on-the-go access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="statistics">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="10000">0</div>
+                    <div class="stat-label">Batches Verified</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="250">0</div>
+                    <div class="stat-label">Registered Manufacturers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="1500">0</div>
+                    <div class="stat-label">Verified Pharmacies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="99">0</div>
+                    <div class="stat-label">Accuracy Rate (%)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stakeholders" id="stakeholders">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built for All Stakeholders</h2>
+                <p>Tailored solutions for every member of the pharmaceutical ecosystem</p>
+            </div>
+            <div class="stakeholders-grid">
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Manufacturers</h3>
+                    <p>Upload batch data, generate QR codes, and track product authenticity throughout the supply chain.
+                    </p>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Secure batch tracking</li>
+                        <li><i class="fas fa-check"></i> Real-time monitoring</li>
+                        <li><i class="fas fa-check"></i> Brand protection</li>
+                    </ul>
+                    <a href="/html/manufacturer-registration.html" class="btn btn-primary">Register Now</a>
+                </div>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Pharmacies</h3>
+                    <p>Verify medicine authenticity, perform bulk verification, and maintain comprehensive records.</p>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Instant verification</li>
+                        <li><i class="fas fa-check"></i> Bulk checking</li>
+                        <li><i class="fas fa-check"></i> QR scanning</li>
+                        <li><i class="fas fa-check"></i> Compliance tracking</li>
+                    </ul>
+                    <a href="/html/pharmacy-registration.html" class="btn btn-primary">Register Now</a>
+                </div>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Citizens</h3>
+                    <p>Quick medicine verification, QR code scanning, and health protection without registration.</p>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Easy verification</li>
+                        <li><i class="fas fa-check"></i> QR scanning</li>
+                        <li><i class="fas fa-check"></i> Safety assurance</li>
+                        <li><i class="fas fa-check"></i> No registration needed</li>
+                    </ul>
+                    <a href="#verify" class="btn btn-primary">Verify Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About PharmaLedger</h2>
+                    <p>PharmaLedger is a revolutionary healthcare technology platform designed to combat the growing
+                        threat of counterfeit medicines in India. Our mission is to create a safer healthcare ecosystem
+                        by providing transparent, secure, and accessible medicine verification tools.</p>
+
+                    <div class="mission-vision">
+                        <div class="mission">
+                            <h4><i class="fas fa-bullseye"></i> Our Mission</h4>
+                            <p>To eliminate counterfeit medicines from the Indian market by creating a unified
+                                verification platform that connects all stakeholders in the pharmaceutical supply chain.
+                            </p>
+                        </div>
+                        <div class="vision">
+                            <h4><i class="fas fa-eye"></i> Our Vision</h4>
+                            <p>A future where every citizen can confidently verify the authenticity of their medicines,
+                                ensuring safe and effective healthcare for all.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <h4>The Problem</h4>
+                            <ul>
+                                <li>1 in 10 medicines sold in India are counterfeit</li>
+                                <li>$4.3 billion counterfeit drug market</li>
+                                <li>20-25% of global counterfeit drugs from India</li>
+                            </ul>
+                        </div>
+                        <div class="about-stat">
+                            <h4>Our Solution</h4>
+                            <ul>
+                                <li>Centralized verification database</li>
+                                <li>QR code-based authentication</li>
+                                <li>Multi-stakeholder platform</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>Ready to join the fight against counterfeit medicines?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Us</h4>
+                            <p><a href="#" id="mail_a">info@pharmaledger.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Call Us</h4>
+                            <p>+91 XXXXX-XXXXX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Visit Us</h4>
+                            <address>some address some place some city<br>some state some pincode</address>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="/images/favicon.png" alt="PharmaLedger">
+                    </div>
+                    <p>Fighting counterfeit medicines in India through innovative technology and collaborative
+                        verification.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#verify">Verify Medicine</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>For Stakeholders</h4>
+                    <ul>
+                        <li><a href="/html/manufacturer-registration">Manufacturers</a></li>
+                        <li><a href="/html/pharmacy-registration.html">Pharmacies</a></li>
+                        <li><a href="#verify">Citizens</a></li>
+                        <li><a href="#contact">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PharmaLedger. All rights reserved. | Fighting counterfeit medicines in India.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
