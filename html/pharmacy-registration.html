@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register your pharmacy with PharmaLedger for instant medicine verification">
+    <title>Pharmacy Registration - PharmaLedger</title>
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/pharmacy-registration.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">
+                    <img src="/images/favicon.png"
+                        alt="PharmaLedger Logo">
+                </a>
+            </div>
+
+            <div class="nav-auth">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+                <a href="login.html" class="btn btn-outline">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="index.html" class="btn btn-secondary">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="registration-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Register Your Pharmacy</h1>
+                    <p>Join India's most trusted medicine verification network and provide your customers with instant
+                        authenticity checking</p>
+
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Instant Verification</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-qrcode"></i>
+                            <span>QR Code Scanning</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Bulk Verification</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-history"></i>
+                            <span>Verification History</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile Friendly</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-visual">
+                    <div class="value-proposition">
+                        <h3>Why Pharmacies Choose PharmaLedger?</h3>
+                        <div class="value-list">
+                            <div class="value-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div class="value-content">
+                                    <h4>Build Customer Trust</h4>
+                                    <p>Show customers you care about their safety with verified medicines</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div class="value-content">
+                                    <h4>Prevent Legal Issues</h4>
+                                    <p>Avoid selling counterfeit medicines and protect your license</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div class="value-content">
+                                    <h4>Competitive Advantage</h4>
+                                    <p>Stand out from competitors with verified medicine guarantee</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div class="value-content">
+                                    <h4>Easy Integration</h4>
+                                    <p>Simple tools that work on any device, no special equipment needed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="progress-section">
+        <div class="container">
+            <div class="progress-container">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <span class="step-label">Pharmacy Info</span>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <span class="step-label">License Details</span>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <span class="step-label">Contact & Owner</span>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <span class="step-label">Documents</span>
+                </div>
+                <div class="progress-step" data-step="5">
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <span class="step-label">Review</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="registration-form-section">
+        <div class="container">
+            <div class="form-container">
+                <form class="registration-form" id="pharmacy-registration-form">
+
+                    <div class="form-step active" id="step-1">
+                        <div class="step-header">
+                            <h2>Pharmacy Information</h2>
+                            <p>Please provide your pharmacy's basic details</p>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group span-2">
+                                <label for="pharmacy-name">Pharmacy Name <span class="required">*</span></label>
+                                <input type="text" id="pharmacy-name" name="pharmacy-name"
+                                    placeholder="e.g., Apollo Pharmacy, MedPlus, City Medical Store" required>
+                                <span class="help-text">Official registered name of your pharmacy</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pharmacy-type">Pharmacy Type <span class="required">*</span></label>
+                                <select id="pharmacy-type" name="pharmacy-type" required>
+                                    <option value="">Select Type</option>
+                                    <option value="retail">Retail Pharmacy</option>
+                                    <option value="wholesale">Wholesale Pharmacy</option>
+                                    <option value="hospital">Hospital Pharmacy</option>
+                                    <option value="online">Online Pharmacy</option>
+                                    <option value="chain">Chain Pharmacy</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gstin">GSTIN Number <span class="required">*</span></label>
+                                <input type="text" id="gstin" name="gstin" placeholder="e.g., 22AAAAA0000A1Z5" required>
+                                <div class="tooltip">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span class="tooltip-text">15-digit GST Identification Number</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group span-2">
+                                <label for="pharmacy-address">Pharmacy Address <span class="required">*</span></label>
+                                <textarea id="pharmacy-address" name="pharmacy-address" rows="3"
+                                    placeholder="Complete address including street, area, city, state, and pin code"
+                                    required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="operating-hours">Operating Hours</label>
+                                <input type="text" id="operating-hours" name="operating-hours"
+                                    placeholder="e.g., 9 AM - 10 PM, 24/7">
+                                <span class="help-text">When is your pharmacy open?</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="website">Website URL</label>
+                                <input type="url" id="website" name="website" placeholder="https://yourpharmacy.com">
+                            </div>
+
+                            <div class="form-group span-2">
+                                <label for="pharmacy-description">Brief Description <span
+                                        class="required">*</span></label>
+                                <textarea id="pharmacy-description" name="pharmacy-description" rows="4"
+                                    placeholder="Describe your pharmacy, specialties, services (e.g., 24/7 service, home delivery, specialized medicines)"
+                                    required></textarea>
+                                <div class="character-count">
+                                    <span id="description-count">0</span>/300 characters
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-2">
+                        <div class="step-header">
+                            <h2>License & Legal Information</h2>
+                            <p>Provide your pharmacy license and regulatory details</p>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="license-number">Pharmacy License Number <span
+                                        class="required">*</span></label>
+                                <input type="text" id="license-number" name="license-number"
+                                    placeholder="e.g., DL-21A-DL-1234567" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="license-authority">License Issuing Authority <span
+                                        class="required">*</span></label>
+                                <select id="license-authority" name="license-authority" required>
+                                    <option value="">Select State Drug Control Authority</option>
+                                    <option value="andhra-pradesh">Andhra Pradesh Drug Control</option>
+                                    <option value="assam">Assam Drug Control</option>
+                                    <option value="bihar">Bihar Drug Control</option>
+                                    <option value="chhattisgarh">Chhattisgarh Drug Control</option>
+                                    <option value="delhi">Delhi Drug Control</option>
+                                    <option value="goa">Goa Drug Control</option>
+                                    <option value="gujarat">Gujarat Drug Control</option>
+                                    <option value="haryana">Haryana Drug Control</option>
+                                    <option value="himachal">Himachal Pradesh Drug Control</option>
+                                    <option value="jharkhand">Jharkhand Drug Control</option>
+                                    <option value="karnataka">Karnataka Drug Control</option>
+                                    <option value="kerala">Kerala Drug Control</option>
+                                    <option value="madhya-pradesh">Madhya Pradesh Drug Control</option>
+                                    <option value="maharashtra">Maharashtra FDA</option>
+                                    <option value="manipur">Manipur Drug Control</option>
+                                    <option value="meghalaya">Meghalaya Drug Control</option>
+                                    <option value="mizoram">Mizoram Drug Control</option>
+                                    <option value="nagaland">Nagaland Drug Control</option>
+                                    <option value="odisha">Odisha Drug Control</option>
+                                    <option value="punjab">Punjab Drug Control</option>
+                                    <option value="rajasthan">Rajasthan Drug Control</option>
+                                    <option value="sikkim">Sikkim Drug Control</option>
+                                    <option value="tamil-nadu">Tamil Nadu Drug Control</option>
+                                    <option value="telangana">Telangana Drug Control</option>
+                                    <option value="tripura">Tripura Drug Control</option>
+                                    <option value="uttar-pradesh">Uttar Pradesh Drug Control</option>
+                                    <option value="uttarakhand">Uttarakhand Drug Control</option>
+                                    <option value="west-bengal">West Bengal Drug Control</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="license-expiry">License Expiry Date <span class="required">*</span></label>
+                                <input type="date" id="license-expiry" name="license-expiry" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="other-certifications">Other Certifications</label>
+                                <input type="text" id="other-certifications" name="other-certifications"
+                                    placeholder="e.g., ISO 9001, Good Pharmacy Practice, Quality Certification">
+                                <span class="help-text">Separate multiple certifications with commas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-3">
+                        <div class="step-header">
+                            <h2>Owner & Contact Information</h2>
+                            <p>Provide owner and primary contact details</p>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="owner-name">Owner/Proprietor Name <span class="required">*</span></label>
+                                <input type="text" id="owner-name" name="owner-name"
+                                    placeholder="Full name of pharmacy owner" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="owner-pan">Proprietor PAN Number</label>
+                                <input type="text" id="owner-pan" name="owner-pan" placeholder="e.g., AAAAA0000A">
+                                <span class="help-text">Optional but recommended</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-name">Contact Person Name <span class="required">*</span></label>
+                                <input type="text" id="contact-name" name="contact-name"
+                                    placeholder="Primary contact person" required>
+                                <span class="help-text">If different from owner</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-designation">Contact Person Role <span
+                                        class="required">*</span></label>
+                                <select id="contact-designation" name="contact-designation" required>
+                                    <option value="">Select Role</option>
+                                    <option value="owner">Owner/Proprietor</option>
+                                    <option value="pharmacist">Pharmacist</option>
+                                    <option value="manager">Store Manager</option>
+                                    <option value="supervisor">Supervisor</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-phone">Contact Phone <span class="required">*</span></label>
+                                <input type="tel" id="contact-phone" name="contact-phone" placeholder="+91 12345-67890"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-email">Contact Email <span class="required">*</span></label>
+                                <input type="email" id="contact-email" name="contact-email" placeholder="your@email.com"
+                                    required>
+                                <span class="help-text">This will be your login email</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password <span class="required">*</span></label>
+                                <div class="password-wrapper">
+                                    <input type="password" id="password" name="password"
+                                        placeholder="Create a strong password" required>
+                                    <button type="button" class="password-toggle" id="password-toggle">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="password-strength" id="password-strength"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm Password <span class="required">*</span></label>
+                                <input type="password" id="confirm-password" name="confirm-password"
+                                    placeholder="Confirm your password" required>
+                                <div class="password-match" id="password-match"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-4">
+                        <div class="step-header">
+                            <h2>Document Upload</h2>
+                            <p>Upload required license documents and certifications</p>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group span-2">
+                                <label for="license-document">Pharmacy License Document <span
+                                        class="required">*</span></label>
+                                <div class="file-upload-area" id="license-upload">
+                                    <input type="file" id="license-document" name="license-document"
+                                        accept=".pdf,.jpg,.jpeg,.png" required>
+                                    <div class="upload-content">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Click to upload or drag and drop</p>
+                                        <span>PDF, JPG, PNG (Max 10MB)</span>
+                                    </div>
+                                    <div class="file-preview" style="display: none;"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group span-2">
+                                <label for="pharmacist-certificate">Responsible Pharmacist Registration Certificate
+                                    <span class="required">*</span></label>
+                                <div class="file-upload-area" id="pharmacist-upload">
+                                    <input type="file" id="pharmacist-certificate" name="pharmacist-certificate"
+                                        accept=".pdf,.jpg,.jpeg,.png" required>
+                                    <div class="upload-content">
+                                        <i class="fas fa-user-md"></i>
+                                        <p>Upload pharmacist's council registration certificate</p>
+                                        <span>Required for license validation</span>
+                                    </div>
+                                    <div class="file-preview" style="display: none;"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group span-2">
+                                <label for="other-documents">Additional Certifications (Optional)</label>
+                                <div class="file-upload-area" id="other-upload">
+                                    <input type="file" id="other-documents" name="other-documents"
+                                        accept=".pdf,.jpg,.jpeg,.png" multiple>
+                                    <div class="upload-content">
+                                        <i class="fas fa-file-upload"></i>
+                                        <p>Upload ISO, Good Pharmacy Practice or other certificates</p>
+                                        <span>Multiple files allowed (Max 5MB each)</span>
+                                    </div>
+                                    <div class="files-preview" style="display: none;"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group span-2">
+                                <div class="document-checklist">
+                                    <h4><i class="fas fa-clipboard-list"></i> Document Checklist</h4>
+                                    <div class="checklist-items">
+                                        <div class="checklist-item">
+                                            <i class="fas fa-square-check"></i>
+                                            <span>Pharmacy license is clear and readable</span>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <i class="fas fa-square-check"></i>
+                                            <span>Pharmacist certificate shows valid registration</span>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <i class="fas fa-square-check"></i>
+                                            <span>All documents are within expiry dates</span>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <i class="fas fa-square-check"></i>
+                                            <span>File sizes are under 10MB each</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-5">
+                        <div class="step-header">
+                            <h2>Review Your Information</h2>
+                            <p>Please review all information before submitting your registration</p>
+                        </div>
+
+                        <div class="review-sections">
+                            <div class="review-section">
+                                <h3><i class="fas fa-store"></i> Pharmacy Information</h3>
+                                <div class="review-grid" id="review-pharmacy"></div>
+                            </div>
+
+                            <div class="review-section">
+                                <h3><i class="fas fa-certificate"></i> License Details</h3>
+                                <div class="review-grid" id="review-license"></div>
+                            </div>
+
+                            <div class="review-section">
+                                <h3><i class="fas fa-user-tie"></i> Contact Information</h3>
+                                <div class="review-grid" id="review-contact"></div>
+                            </div>
+
+                            <div class="review-section">
+                                <h3><i class="fas fa-upload"></i> Documents</h3>
+                                <div class="review-grid" id="review-documents"></div>
+                            </div>
+                        </div>
+
+                        <div class="declaration-section">
+                            <h3>Declaration & Agreement</h3>
+                            <div class="declaration-content">
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="declaration" name="declaration" required>
+                                    <span class="checkmark"></span>
+                                    <span class="declaration-text">
+                                        I hereby declare that all the information provided above is true and accurate to
+                                        the best of my knowledge.
+                                        I understand that any false information may lead to rejection of registration or
+                                        legal consequences.
+                                        I confirm that I have the authority to register this pharmacy on PharmaLedger.
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="terms-section">
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    <span class="checkmark"></span>
+                                    <span class="terms-text">
+                                        I agree to PharmaLedger's <a href="#terms" target="_blank">Terms of Service</a>,
+                                        <a href="#privacy" target="_blank">Privacy Policy</a>, and
+                                        <a href="#pharmacy-agreement" target="_blank">Pharmacy Partner Agreement</a>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="compliance-section">
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="compliance" name="compliance" required>
+                                    <span class="checkmark"></span>
+                                    <span class="compliance-text">
+                                        I commit to using PharmaLedger's verification tools responsibly and in
+                                        compliance with
+                                        all applicable pharmaceutical laws and regulations in India.
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary" id="prev-btn" style="display: none;">
+                            <i class="fas fa-arrow-left"></i>
+                            Previous
+                        </button>
+
+                        <button type="button" class="btn btn-primary" id="next-btn">
+                            Next
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+
+                        <button type="submit" class="btn btn-success" id="submit-btn" style="display: none;">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Registration
+                        </button>
+                    </div>
+                </form>
+
+                <div class="success-message" id="success-message" style="display: none;">
+                    <div class="success-content">
+                        <i class="fas fa-check-circle"></i>
+                        <h2>Registration Submitted Successfully!</h2>
+                        <p>Thank you for registering your pharmacy with PharmaLedger. Your application is now under
+                            review.</p>
+                        <div class="next-steps">
+                            <h3>What's Next?</h3>
+                            <ul>
+                                <li>Our team will verify your documents within 1-2 business days</li>
+                                <li>You'll receive an email confirmation once approved</li>
+                                <li>After approval, you'll get access to verification tools</li>
+                                <li>We'll provide training materials and support</li>
+                            </ul>
+                        </div>
+                        <div class="success-actions">
+                            <a href="login.html" class="btn btn-primary">Go to Login</a>
+                            <a href="index.html" class="btn btn-outline">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="help-section">
+                <div class="help-card">
+                    <h3><i class="fas fa-question-circle"></i> Need Help?</h3>
+                    <p>Having trouble with registration? Our pharmacy support team is here to assist you.</p>
+                    <div class="help-options">
+                        <a href="mailto:pharmacy.support@pharmaledger.com" class="help-link">
+                            <i class="fas fa-envelope"></i>
+                            pharmacy.support@pharmaledger.com
+                        </a>
+                        <a href="tel:+91 xxxxxxxxxx" class="help-link">
+                            <i class="fas fa-phone"></i>
+                            +91 xxxxxxxxxx
+                        </a>
+                        
+                    </div>
+                </div>
+
+                <div class="security-info">
+                    <h4><i class="fas fa-shield-alt"></i> Your Data is Secure</h4>
+                    <p>All pharmacy information is encrypted and stored securely. We comply with Indian data protection
+                        laws and pharmaceutical regulations.</p>
+                    <div class="security-badges">
+                        <span class="badge"><i class="fas fa-lock"></i> SSL Encrypted</span>
+                        <span class="badge"><i class="fas fa-certificate"></i> HIPAA Compliant</span>
+                        <span class="badge"><i class="fas fa-check-circle"></i> Data Protected</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="/images/favicon.png"
+                            alt="PharmaLedger">
+                    </div>
+                    <p>Fighting counterfeit medicines in India through innovative technology and pharmacy partnerships.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>For Pharmacies</h4>
+                    <ul>
+                        <li><a href="#features">Verification Tools</a></li>
+                        <li><a href="#pricing">Pricing Plans</a></li>
+                        <li><a href="#training">Training Resources</a></li>
+                        <li><a href="#support">Pharmacy Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PharmaLedger. All rights reserved. | Trusted by 1,500+ pharmacies across India</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>Processing Registration...</h3>
+            <p>Please wait while we submit your pharmacy information</p>
+        </div>
+    </div>
+
+    <script src="/js/pharmacy-registration.js"></script>
+</body>
+
+</html>
