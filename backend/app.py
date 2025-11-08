@@ -13,7 +13,6 @@ def create_app():
     CORS(app)
     db.init_app(app)
     
-
     upload_folders = [
         os.path.join('static', 'uploads', 'manufacturers'),
         os.path.join('static', 'uploads', 'pharmacies')
@@ -107,14 +106,14 @@ def register_routes(app):
                 'message': 'Error fetching batches',
                 'error': str(e)
             }), 500
-    
+
+    # route for registering manufacturers
     @app.route('/api/register-manufacturer', methods=['POST'])
     def register_manufacturer():
         print("Manufacturer registration route called")
         try:
             from datetime import date
             
-            # Get form data
             form_data = request.form
             files = request.files
             
@@ -122,7 +121,6 @@ def register_routes(app):
             print("Form fields:", dict(form_data))
             print("Files:", list(files.keys()))
             
-            # Required fields
             required = ['company-name', 'license-number', 'contact-name',
                        'contact-phone', 'contact-email', 'password']
             
@@ -133,7 +131,6 @@ def register_routes(app):
                         'error': f'{field.replace("-", " ").title()} is required'
                     }), 400
             
-            # Check uniqueness
             if Manufacturer.query.filter_by(contact_email=form_data.get('contact-email').strip().lower()).first():
                 return jsonify({'success': False, 'error': 'Email already registered'}), 409
             
@@ -143,7 +140,6 @@ def register_routes(app):
             if Manufacturer.query.filter_by(license_number=form_data.get('license-number').strip()).first():
                 return jsonify({'success': False, 'error': 'License already registered'}), 409
             
-            # Handle file upload
             license_file_path = None
             if 'license-document' in files:
                 file = files['license-document']
@@ -154,7 +150,6 @@ def register_routes(app):
                     file.save(os.path.join(folder, filename))
                     license_file_path = f'/static/uploads/manufacturers/{filename}'
             
-            # Parse date
             license_expiry = None
             if form_data.get('license-expiry'):
                 try:
@@ -162,7 +157,6 @@ def register_routes(app):
                 except:
                     pass
             
-            # Create manufacturer
             manufacturer = Manufacturer(
                 company_name=form_data.get('company-name', '').strip(),
                 license_number=form_data.get('license-number', '').strip(),
@@ -214,15 +208,15 @@ def register_routes(app):
         try:
             from datetime import date
             
-            # Get form data
+            
             form_data = request.form
             files = request.files
-            
+
+            # for me to know it's working
             print("=== RECEIVED PHARMACY DATA ===")
             print("Form fields:", dict(form_data))
             print("Files:", list(files.keys()))
             
-            # Required fields based on the HTML form
             required = ['pharmacy-name', 'pharmacy-type', 'license-number', 
                        'owner-name', 'contact-name', 'contact-phone', 
                        'contact-email', 'password']
@@ -234,7 +228,6 @@ def register_routes(app):
                         'error': f'{field.replace("-", " ").title()} is required'
                     }), 400
             
-            # Check uniqueness
             if Pharmacy.query.filter_by(contact_email=form_data.get('contact-email').strip().lower()).first():
                 return jsonify({'success': False, 'error': 'Email already registered'}), 409
             
@@ -244,7 +237,6 @@ def register_routes(app):
             if Pharmacy.query.filter_by(license_number=form_data.get('license-number').strip()).first():
                 return jsonify({'success': False, 'error': 'License already registered'}), 409
             
-            # Handle file uploads
             license_file_path = None
             if 'license-document' in files:
                 file = files['license-document']
@@ -265,7 +257,6 @@ def register_routes(app):
                     file.save(os.path.join(folder, filename))
                     pharmacist_cert_path = f'/static/uploads/pharmacies/{filename}'
             
-            # Handle multiple other documents
             other_docs_paths = []
             if 'other-documents' in files:
                 other_files = request.files.getlist('other-documents')
@@ -277,7 +268,6 @@ def register_routes(app):
                         file.save(os.path.join(folder, filename))
                         other_docs_paths.append(f'/static/uploads/pharmacies/{filename}')
             
-            # Parse date
             license_expiry = None
             if form_data.get('license-expiry'):
                 try:
@@ -285,7 +275,6 @@ def register_routes(app):
                 except:
                     pass
             
-            # Create pharmacy
             pharmacy = Pharmacy(
                 pharmacy_name=form_data.get('pharmacy-name', '').strip(),
                 pharmacy_type=form_data.get('pharmacy-type', '').strip() or None,
@@ -339,7 +328,7 @@ def register_routes(app):
         """Check if email/phone/license exists for both manufacturers and pharmacies"""
         field = request.args.get('field')
         value = request.args.get('value', '').strip()
-        entity_type = request.args.get('type', 'manufacturer')  # 'manufacturer' or 'pharmacy'
+        entity_type = request.args.get('type', 'manufacturer')  
         
         if not field or not value:
             return jsonify({'exists': False})
@@ -354,7 +343,7 @@ def register_routes(app):
                     exists = Pharmacy.query.filter_by(contact_phone=value).first()
                 elif field == 'license':
                     exists = Pharmacy.query.filter_by(license_number=value).first()
-            else:  # manufacturer
+            else:  
                 if field == 'email':
                     exists = Manufacturer.query.filter_by(contact_email=value.lower()).first()
                 elif field == 'phone':
