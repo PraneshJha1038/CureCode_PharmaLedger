@@ -351,10 +351,10 @@ This project is licensed under the MIT License. See LICENSE file for details.
 
 ## Contact
 
-**Project Lead:** PharmaLedger Team  
-**Email:** contact@pharmaledger.in  
+**Project Lead:** Pranesh Jha
+**Email:** Praneshjha1038@gmail.com 
 **Website:** www.pharmaledger.in  
-**GitHub:** https://github.com/pharmaledger  
+**GitHub:** https://github.com/CureCode_Pharmaledger 
 
 For questions, suggestions, or partnership inquiries, please reach out through any of the channels above.
 
